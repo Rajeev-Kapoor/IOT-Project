@@ -9,7 +9,12 @@ href:'/app/AddRooms',
 ,
   {label:"Remove Room",
     subLabel:"Remove Room",
-    href:"#",
+    href:"/app/RemoveRooms",
+  },
+  {
+    label:"Control",
+    subLabel:" ",
+    href:"/app/ControlRooms"
   }
   ]},
       ]

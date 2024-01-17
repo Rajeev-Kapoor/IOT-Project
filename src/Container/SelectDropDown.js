@@ -3,12 +3,12 @@ import React from 'react'
 import TextError from './TextError'
 
 const SelectDropDown = (props) => {
-  const  {label, name , options, ...rest} = props
+  const  {label, name ,lstyle,fstyle,dstyle, options, ...rest} = props
   
   return (
-    <div style={{display:"flex", flexDirection : "column", textAlign:"left", margin:"5px", height:"50px",   width:"250px"}}>
-<label htmlFor={name}>{label}</label>
-        <Field as="select" id ={name} name={name} {...rest}>
+    <div style={dstyle}>
+<label htmlFor={name} style={lstyle}>{label}</label>
+        <Field as="select" style={fstyle} id ={name} name={name} {...rest}>
         {
               options.map(option=>{
                 return( 

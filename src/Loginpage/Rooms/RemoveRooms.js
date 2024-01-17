@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as Yup from'yup'
 import {Form, Formik } from 'formik'
 
 import FormikControl  from '../../Container/FormikControl'
 //import AddSwitches from './AddSwitches'
-import {  UpdateroomField } from '../../firebase/firebase'
+import { Deletedata, updateroomField } from '../../firebase/firebase'
+import { connectDatabaseEmulator } from 'firebase/database'
 //import ReadData from '../../firebase/firebase'
-const AddRooms = () => {
+
+const RemoveRooms = () => {
+  const [count,setCount]=useState(0)
+  const [rooms,setRooms]=useState([])
   const dropdownoptions = [
  
     {key:"select an option" , value:""},
@@ -23,15 +27,15 @@ const initialValues={
 
   const validationSchema =Yup.object({
      roomName:Yup.string().required("Required"),
-     switchName:Yup.string().required("Required"),
+    //  switchName:Yup.string().required("Required"),
     // typeofSwitch:Yup.string().required("required")
   })
 
   const onSubmit=(values)=>{
    //const data = ReadData(values.roomName);
-  
-   const data= UpdateroomField(values.roomName,values.switchName,values.typeofSwitch)
-   console.log(data,"data")
+
+Deletedata(values.roomName,values.switchName,values.typeofSwitch)
+  console.log(values,"data")
    //updatedata(values.roomName,values.switchName,"ON")
    }
    const dstyle={
@@ -48,7 +52,7 @@ const  lstyle={
    }
    const fstyle={
     height:"30px",
-    paddingLeft:"10px",
+    paddingleft:"10px",
     backgroundColor:"#F0EEE6",
     border:"3px solid grey",
     borderRadius:"5px"
@@ -67,7 +71,7 @@ const  lstyle={
       return(
     <>
     <Form style={{ width:"500px",margin:"10px",height:"90%",backgroundColor:"#EEF5FF",boxShadow:"15px 15px grey",padding:"10px", display :"flex", justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
-    <div style={{position:"absolute",top:"160px", fontSize:"1.5em",width:"350px",backgroundColor:"lightgrey"}} >Add Appliances  To  Rooms</div>
+    <div style={{position:"absolute",top:"160px", fontSize:"1.5em",width:"25%",backgroundColor:"lightgrey"}} >Remove Appliances  From  Rooms</div>
     <FormikControl control='input' type ='text' label="Room Name" name="roomName" dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
     <FormikControl control='input' type ="text" label= "Switch Name" name= "switchName" dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
     <FormikControl control='select' label='Select Type Of Switch' name = 'typeofSwitch' options={dropdownoptions} dstyle={dstyle} fstyle={fstyle} lstyle={lstyle}/>
@@ -97,4 +101,4 @@ const  lstyle={
 )
 }
 
-export default AddRooms
+export default RemoveRooms
