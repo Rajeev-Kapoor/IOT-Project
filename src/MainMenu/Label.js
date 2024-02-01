@@ -11,13 +11,14 @@ href:'/app/AddRooms',
     subLabel:"Remove Room",
     href:"/app/RemoveRooms",
   },
-  {
-    label:"Control",
-    subLabel:" ",
-    href:"/app/ControlRooms"
-  }
+ 
   ]},
-      ]
+  {label: "Controls",
+  children:[
+    {   label:`Switch Board`,
+href:'/app/ControlRooms',
+}  
+]}]
 
    
   export default NAV_ITEMS

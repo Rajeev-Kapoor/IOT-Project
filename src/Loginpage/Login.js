@@ -20,7 +20,7 @@ const Login = () => {
         color:"#736odf",
     }
     const fstyle={
-        borderRadius:"2px",
+        
         height:"40px",
         width:"300PX",
         borderRadius:"5PX",
@@ -56,7 +56,7 @@ onSubmit={onSubmit}>
         formik=>{
 return(<>
     <div style ={{display:"flex",backgroundColor:"#F1EAFF",height:"100vh", justifyContent:"center",alignItems:"center"}}>
-<div style ={{width:"35%",height:"85%", background:"#f0f0f0",alignItems:"center",justifyContent:"center",display:"flex",flexDirection:"column"}}>
+<div style ={{width:"35%",height:"85%", backgroundColor:"#f0f0f0",alignItems:"center",justifyContent:"center",display:"flex",flexDirection:"column"}}>
  <img src = {logo}  style={{width:"60px"}} alt="img"/> 
  <span>Smart Homes </span>
 
@@ -68,7 +68,7 @@ return(<>
  <Form style ={{display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",height:"500px"}}>
 <FormikControl control='input' type="text" label= "USER ID" name="loginId" dstyle={dstyle} lstyle={lstyle} fstyle={fstyle}/>
 <FormikControl control='input' type="text" label="PASSWORD" name="password" dstyle={dstyle} lstyle={lstyle} fstyle={fstyle}/>
-<button type = "submit" style ={{backgroundColor:"lightblue",color:"#736odf",border:"4px solid lightgrey", width:"120px",borderRadius:"5px",position:"absolute", bottom:"200px", height:"30px", fontSize:"1em"}}>Submit</button>
+<button type = "submit" style ={{backgroundColor:"lightgrey",color:"#736odf",border:"4px solid lightgrey", width:"120px",borderRadius:"5px",position:"absolute", bottom:"100px", height:"30px", fontSize:"1em"}}>Submit</button>
 {/* {valid&&<App/>} */}
 </Form> 
     </div>    

@@ -9,7 +9,7 @@ const Input = (props) => {
     return (
     <div style={dstyle}>
     <label htmlFor={name} style={lstyle}>{label}  </label>
-    <Field  style = {fstyle}  id ={name} name={name}{...rest}></Field>
+    <Field style = {fstyle}  id ={name} name={name}{...rest}></Field>
     <ErrorMessage name={name} component={TextError}/>
     </div>
   )

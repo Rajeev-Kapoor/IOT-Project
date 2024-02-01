@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getDatabase ,ref, update,get,set} from "firebase/database"
-import React from "react";
-import { useState,useEffect } from "react";
+//import React from "react";
+//import { useState,useEffect } from "react";
 // import { json } from "react-router-dom";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -48,7 +48,7 @@ else{
 
 
 
-export function UpdateroomField(roomName,switchName,typeofSwitch){
+export function UpdateroomField(roomName,switchName,typeofSwitch,pin){
   const db = getDatabase()
   const dbRef = ref(db,roomName+"/"+switchName) 
   console.log(roomName,switchName,typeofSwitch,"hiiam fgfg")
@@ -62,6 +62,7 @@ get(dbRef)
   else{
     let udate = { };
     udate.status="";
+    udate.pin=pin;
     udate.typeofSwitch =typeofSwitch; 
     update(dbRef, udate);
     console.log("updat")
@@ -78,33 +79,37 @@ get(dbRef)
 export const updatedata=(roomName,switchName,status)=>{
   const db = getDatabase()
   console.log(db,"hiiam firebase")
+  const dbr=ref(db,'/')
   const dbRef = ref(db,roomName+'/'+switchName) 
   console.log(roomName,status,"hiiam fire")
   let udate = {};
-  udate.status = status;
+  let str={};
+  udate.status = `${status}`;
+   str.String=roomName+'/'+switchName+'/'
   update(dbRef, udate);
+  update(dbr,str)
   // update(dbRef,{
   // productid:status
   // })
 }
 
-export function ReadData (roomName) {
-  const[retData,setRetData] = useState(null);
+// export function ReadData (roomName) {
+//   const[retData,setRetData] = useState(null);
 
-  console.log(roomName);
-  useEffect(() => {
-  const db=getDatabase()
+//   console.log(roomName);
+//   useEffect(() => {
+//   const db=getDatabase()
   
-  const reference=ref(db,`${roomName}`)
-get(reference)
-.then((snapshot) =>{
- const data =snapshot.val();
-setRetData(data);
-  console.log(data,"dataread")
-})
-})
-}
-;
+//   const reference=ref(db,`${roomName}`)
+// get(reference)
+// .then((snapshot) =>{
+//  const data =snapshot.val();
+// setRetData(data);
+//   console.log(data,"dataread")
+// })
+// })
+// }
+// ;
 export default app
 
 // const writeUserData=(ProductId,name,status)=>{

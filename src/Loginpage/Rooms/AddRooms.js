@@ -18,19 +18,21 @@ const AddRooms = () => {
 const initialValues={
     roomName:"",
     switchName:"",
-    typeofSwitch:"" 
+    typeofSwitch:"" ,
+    pin:"",
   }
 
   const validationSchema =Yup.object({
      roomName:Yup.string().required("Required"),
      switchName:Yup.string().required("Required"),
+     pin:Yup.number().required("Required"),
     // typeofSwitch:Yup.string().required("required")
   })
 
   const onSubmit=(values)=>{
    //const data = ReadData(values.roomName);
   
-   const data= UpdateroomField(values.roomName,values.switchName,values.typeofSwitch)
+   const data= UpdateroomField(values.roomName,values.switchName,values.typeofSwitch,values.pin)
    console.log(data,"data")
    //updatedata(values.roomName,values.switchName,"ON")
    }
@@ -67,11 +69,11 @@ const  lstyle={
       return(
     <>
     <Form style={{ width:"500px",margin:"10px",height:"90%",backgroundColor:"#EEF5FF",boxShadow:"15px 15px grey",padding:"10px", display :"flex", justifyContent:"center",alignItems:"center",flexDirection:"column"}}>
-    <div style={{position:"absolute",top:"160px", fontSize:"1.5em",width:"350px",backgroundColor:"lightgrey"}} >Add Appliances  To  Rooms</div>
-    <FormikControl control='input' type ='text' label="Room Name" name="roomName" dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
-    <FormikControl control='input' type ="text" label= "Switch Name" name= "switchName" dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
+    <div style={{position:"absolute",top:"160px", fontSize:"1.5em",width:"350px"}} >Add Appliances</div>
+    <FormikControl control='input' type ='text' label="Room" name="roomName" placeholder="Name of the Room eg Kitchen" dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
+    <FormikControl control='input' type ="text" label= "Appliance" name= "switchName" placeholder="Name of the Device eg. Fan" dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
     <FormikControl control='select' label='Select Type Of Switch' name = 'typeofSwitch' options={dropdownoptions} dstyle={dstyle} fstyle={fstyle} lstyle={lstyle}/>
- 
+<FormikControl control="input" type="text" label="Pin number" name="pin" placeholder="Pin number to handle the device "dstyle={dstyle}  lstyle={lstyle} fstyle={fstyle}/>
     <button type='submit' style={{width:"170px",border:"4px solid lightgrey", borderRadius:"10px"  ,height:"40px",backgroundColor:"lightblue",position:"absolute",bottom:"100px"}}  > Submit </button>
 </Form>
 
